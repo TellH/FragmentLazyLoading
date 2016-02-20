@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     @InjectView(R.id.viewPager2)
     ViewPager viewPager;
     private List<Fragment> fragmentList;
-    private List<String> titleList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentList.add(MoreFragment.newInstance(3,true));
         fragmentList.add(MoreFragment.newInstance(4,true));
         FragmentManager supportFragmentManager = getSupportFragmentManager();
-        MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(supportFragmentManager, fragmentList, titleList);
+        MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(supportFragmentManager, fragmentList);
         viewPager.setAdapter(myFragmentPagerAdapter);
 
         viewPager.setOffscreenPageLimit(4);
