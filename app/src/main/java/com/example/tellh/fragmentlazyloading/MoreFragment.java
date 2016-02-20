@@ -12,10 +12,11 @@ public class MoreFragment extends LazyFragment {
     private int tabIndex;
     public static final String INTENT_INT_INDEX="index";
 
-    public static MoreFragment newInstance(int tabIndex) {
+    public static MoreFragment newInstance(int tabIndex,boolean isLazyLoad) {
 
         Bundle args = new Bundle();
         args.putInt(INTENT_INT_INDEX, tabIndex);
+        args.putBoolean(LazyFragment.INTENT_BOOLEAN_LAZYLOAD, isLazyLoad);
         MoreFragment fragment = new MoreFragment();
         fragment.setArguments(args);
         return fragment;

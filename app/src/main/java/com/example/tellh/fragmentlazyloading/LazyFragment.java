@@ -30,7 +30,7 @@ public class LazyFragment extends BaseFragment {
     private FrameLayout layout;
     private boolean isStart = false;//是否处于可见状态，in the screen
 
-    @Deprecated
+    @Override
     protected final void onCreateView(Bundle savedInstanceState) {
         Log.d("TAG", "onCreateView() : " + "getUserVisibleHint():" + getUserVisibleHint());
         super.onCreateView(savedInstanceState);
@@ -40,7 +40,7 @@ public class LazyFragment extends BaseFragment {
         }
         //判断是否懒加载
         if (isLazyLoad) {
-            //处于完全可见、没被初始化的状态，调用onCreateViewLazy显示内容
+            //一旦isVisibleToUser==true即可对真正需要的显示内容进行加载
             if (getUserVisibleHint() && !isInit) {
                 this.savedInstanceState = savedInstanceState;
                 onCreateViewLazy(savedInstanceState);

@@ -15,7 +15,7 @@ import butterknife.InjectView;
 public class MainActivity extends AppCompatActivity {
 
     @InjectView(R.id.viewPager2)
-    ViewPager viewPager2;
+    ViewPager viewPager;
     private List<Fragment> fragmentList;
     private List<String> titleList;
 
@@ -24,21 +24,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
-        titleList = new ArrayList<>();
-        titleList.add("第一页");
-        titleList.add("第二页");
-        titleList.add("第三页");
-        titleList.add("第四页");
         fragmentList = new ArrayList<>();
-        fragmentList.add(MoreFragment.newInstance(1));
-        fragmentList.add(MoreFragment.newInstance(2));
-        fragmentList.add(MoreFragment.newInstance(3));
-        fragmentList.add(MoreFragment.newInstance(4));
+        fragmentList.add(MoreFragment.newInstance(1,false));
+        fragmentList.add(MoreFragment.newInstance(2,true));
+        fragmentList.add(MoreFragment.newInstance(3,true));
+        fragmentList.add(MoreFragment.newInstance(4,true));
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(supportFragmentManager, fragmentList, titleList);
-        viewPager2.setAdapter(myFragmentPagerAdapter);
+        viewPager.setAdapter(myFragmentPagerAdapter);
 
-        viewPager2.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(4);
     }
 
 }
